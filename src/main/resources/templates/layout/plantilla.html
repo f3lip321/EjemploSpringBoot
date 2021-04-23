@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<title>Plantilla</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<header class="bg-info bg-gradient text-white text-center p-3" th:fragment="header">
+		<nav class="navbar navbar-expand-lg navbar-dark">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">Usuarios</a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+					aria-controls="navbarNavAltMarkup" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+						<a class="nav-link active" aria-current="page" href="#">Registrar</a>
+						<a class="nav-link" href="#">contacto</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</header>
+	
+	<footer  class="bg-dark bg-gradient fixed-bottom p-2 text-white text-center fw-bold" th:fragment="footer">
+	<span>Desarrollo Full Stack Java &copy;</span>
+	</footer>
+	
+</body>
+</html>
