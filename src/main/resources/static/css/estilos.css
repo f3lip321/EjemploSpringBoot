@@ -1,0 +1,21 @@
+body.darkmode{
+	background-color:rgb(12,12,12);
+	color:white;
+}
+
+.switch{
+	background:#343f5d;
+	border-radius:1000px;
+	position:relative;
+	border:none;
+	outline:none;
+}
+
+.switch > span{
+	width:30px;
+	height:30px;
+	line-height:30px;
+	display:block;
+	background:none;
+	color:#fff;
+}

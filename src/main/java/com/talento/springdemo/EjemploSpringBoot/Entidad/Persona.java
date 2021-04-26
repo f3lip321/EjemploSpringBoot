@@ -2,14 +2,13 @@ package com.talento.springdemo.EjemploSpringBoot.Entidad;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.Data;
+
+
 
 /**
  * 
@@ -36,5 +35,7 @@ public class Persona implements Serializable {
 	private boolean estado;
 	//private int edad;
 	
-	
+	@OneToMany
+	@JoinColumn(name="id_persona")
+	private List<Rol> roles;
 }

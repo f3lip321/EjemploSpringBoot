@@ -1,6 +1,8 @@
 package com.talento.springdemo.EjemploSpringBoot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,13 +21,25 @@ public class InicioController {
 	private PersonaService servicio;
 	
 	@GetMapping("/")
-	public String inicio(Model model) {
+	public String inicio(Model model,@AuthenticationPrincipal User user) {
 	
-		var personas = servicio.listarPersonas();
+		String url="";
+		String rol=user.getAuthorities().toString();
+		
+		if(rol.contains("ADMIN")) {
+			url = "/index";
+			var personas = servicio.listarPersonas();
+			model.addAttribute("personas",personas);
+		}else if(rol.contains("USER")) {
+			url="/usuario";
+		}else if(rol.contains("GUESS")) {
+			url="/invitado";
+		}
+		
 		//var personas=new ArrayList();
 		//var personas=Array.asList(persona1,persona2,persona3);
-		model.addAttribute("personas",personas);
-		return "index";
+		
+		return url;
 	}
 	
 	@GetMapping("/agregar")
@@ -42,12 +56,12 @@ public class InicioController {
 	@GetMapping("/editar/{idPersona}")
 	public String editar(Persona persona, Model model) {
 		persona = servicio.buscarPersona(persona);
-		model.addAttribute("persona", persona);
+		model.addAttribute("persona",persona);
 		return "modificar";
 	}
 	
 	@GetMapping("/eliminar/{idPersona}")
-	public String eliminar(Persona persona, Model model) {
+	public String eliminar(Persona persona) {
 		servicio.eliminar(persona);
 		return "redirect:/";
 	}

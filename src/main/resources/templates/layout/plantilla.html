@@ -23,18 +23,19 @@
 						<a class="nav-link" href="#">contacto</a>
 					</div>
 					<form method="post" th:action="@{/logout}">
-						<span class="fw-bold">Bienvenido:</span>
-						<span sec:authentication="name"> </span>
+						<span class="fw-bold">Bienvenido: </span>
+						<span sec:authentication="name"></span>
 						<button type="submit" class="btn btn-outline-primary">Cerrar Sesión</button>
 					</form>
 				</div>
 			</div>
 		</nav>
 	</header>
-	
 	<footer  class="bg-dark bg-gradient fixed-bottom p-2 text-white text-center fw-bold" th:fragment="footer">
 	<span>Desarrollo Full Stack Java &copy;</span>
+	<!--  
+	<span class="fw-bold">Perfil</span>
+	<span sec:authentication="principal.authorities"></span>-->
 	</footer>
-	
 </body>
 </html>
