@@ -22,6 +22,11 @@
 						<a class="nav-link active" aria-current="page" href="#">Registrar</a>
 						<a class="nav-link" href="#">contacto</a>
 					</div>
+					<form method="post" th:action="@{/logout}">
+						<span class="fw-bold">Bienvenido:</span>
+						<span sec:authentication="name"> </span>
+						<button type="submit" class="btn btn-outline-primary">Cerrar Sesión</button>
+					</form>
 				</div>
 			</div>
 		</nav>

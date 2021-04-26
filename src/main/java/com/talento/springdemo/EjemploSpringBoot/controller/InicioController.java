@@ -38,4 +38,17 @@ public class InicioController {
 		servicio.guardar(persona);
 		return "redirect:/";
 	}
+	
+	@GetMapping("/editar/{idPersona}")
+	public String editar(Persona persona, Model model) {
+		persona = servicio.buscarPersona(persona);
+		model.addAttribute("persona", persona);
+		return "modificar";
+	}
+	
+	@GetMapping("/eliminar/{idPersona}")
+	public String eliminar(Persona persona, Model model) {
+		servicio.eliminar(persona);
+		return "redirect:/";
+	}
 }
